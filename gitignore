@@ -1,2 +1,3 @@
 #Ignores the largest file of my dataset
-sp500_stocks.csv
+Datasets/sp500_stocks.csv
+.ipynb_checkpoints
