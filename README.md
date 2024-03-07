@@ -1,7 +1,7 @@
 # Stock_test 
 
 ## Table of Contents 
-- Data Set & Data Directory
+- [Data Set & Data Directory](https://github.com/Efflorescence01/Stock_test/blob/main/README.md#dataset)
 - Project Overview
 - Walkthrough Demo
 - Project Flowchart
