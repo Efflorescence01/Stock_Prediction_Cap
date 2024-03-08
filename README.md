@@ -1,9 +1,8 @@
 # Stock Analysis & Prediction Capstone 
 
 ## Table of Contents 
-- [Data Set & Data Directory](https://github.com/Efflorescence01/Stock_test/blob/main/README.md#dataset)
-- [Project Overview](https://github.com/Efflorescence01/Stock_test/blob/main/README.md#dataset)
-- [Walkthrough Demo](https://github.com/Efflorescence01/Stock_test/blob/main/README.md#dataset)
+- Dateset
+- Project Overview
 - Project Flowchart
 - Project Organization
 
