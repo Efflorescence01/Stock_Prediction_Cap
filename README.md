@@ -63,4 +63,8 @@ The dataset contains 3 CSV files:
         b. Preprocess the data frame and add the features that you desire.
         c. Run the models with your data frame and evaluate the results.
 ### Project Organization 
-    
+    - Cleaned_Dataset file contains the cleaned data frames
+    - Presentations file contains all the Sprint Presentations
+    - Stock Data API & Cleaning file contains the API and Stock data cleaning notebooks
+    - README.md is a overview of the entire repository
+    - gitignore file tracks all the files that do not need to be updated or tracked
