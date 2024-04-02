@@ -50,16 +50,16 @@ The dataset contains 3 CSV files:
     - `Open`
     - `Volume`
 ### Project Overview 
-  This is a data analysis & machine learning project for stock trading and investing. It is focused on the S&P 500 index and the companies within that index during the period from 2010 to the present year (2024). This project will utilize Juypterlab/Notebook to perform data cleaning, data analysis, and modeling. The language of choice will be Python. We will also be using data science-related libraries such as matplotlib, pandas, NumPy, and Scikitlearn. As a stock trading enthusiast, I started this project to improve my skills and knowledge in data analysis regarding stock data. Previously, I only worked with simple statistical terms such as averages, and maximum and minimum values. As such,I wanted a more granular perspective of stock data to improve my analysis of my trades and thus increase my earnings and win rate.Individuals/businesses engaged in investing or trading activities may obtain some insight from this project. 
+  This is a data analysis & machine learning project for stock trading and investing. It is focused on the S&P 500 index and the companies within that index during the period from 2010 to the present year (2024). This project will utilize Juypterlab/Notebook to perform data cleaning, data analysis, and modeling. The language of choice will be Python. We will also be using data science-related libraries such as matplotlib, pandas, NumPy, and Scikitlearn. As a stock trading enthusiast, I started this project to improve my skills and knowledge in data analysis regarding stock data. Previously, I only worked with simple statistical terms such as averages, and maximum and minimum values. As such, I wanted a more granular perspective of stock data to improve my analysis of my trades and thus increase my earnings and win rate.Individuals/businesses engaged in investing or trading activities may obtain some insight from this project. 
 ### Walkthrough Demo
     1. Open up the Stock_API Notebook
-        a. Follow the markdown cells to set up your api keys and to understand the documentation for the API.
+        a. Follow the markdown cells to set up your API keys and to understand the documentation for the API.
         b. Run the cells until you are able to save the file
 
     2. Open up the Stock Modeling Notebook
-        a. Import the saved csv file
-        b. Preprocess the dataframe and add the features that you desire.
-        c. Run the models with your dataframe and evaluate the results.
+        a. Import the saved CSV file
+        b. Preprocess the data frame and add the features that you desire.
+        c. Run the models with your data frame and evaluate the results.
 ### Project Flowchart 
     
 ### Project Organization 
