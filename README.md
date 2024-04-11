@@ -2,9 +2,9 @@
 
 ## Table of Contents 
 - [Dateset](#Dataset)
-- [Project Overview](#Project Overview)
-- [Project Flowchart](#Project Flowchart)
-- [Project Organization](#Project Organization)
+- [Project Overview](#Project\Overview)
+- [Project Flowchart](#Project\Flowchart)
+- [Project Organization](#Project\Organization)
 
 ### Dataset 
 There is a new dataset called Cleaned_Dataset containing a CSV with the GOOG data frame. We will be using this CSV file to create our machine-learning models.
