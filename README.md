@@ -11,14 +11,14 @@ The datasets were obtained on Kaggle: https://www.kaggle.com/datasets/andrewmvd/
 The dataset contains 4 CSV files. The first three CSV files were retrieved from Kaggle and the last dataset CSV file was retrieved using an API from [Alpha Vantage](https://www.alphavantage.co/documentation/).
 
 - GOOG.csv
-- open
-- high
-- low
-- close
-- adjusted close
-- volume
-- Tomorrow_Adj_close
-- Target
+    - `open`
+    - `high`
+    - `low`
+    - `close`
+    - `adjusted close`
+    - `volume`
+    - `Tomorrow_Adj_close`
+    - `Target`
 
 - sp500_index.csv
     - `Date`
