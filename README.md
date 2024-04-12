@@ -8,7 +8,7 @@
 
 ### Dataset
 The datasets were obtained on Kaggle: https://www.kaggle.com/datasets/andrewmvd/sp-500-stocks. This dataset is updated regularly by the main contributor of that page. As such the current dataset that I have on hand will be behind compared to the one on the website. As a note, the dataset was retrieved on March.3,2024. 
-The dataset contains 4 CSV files. The first three CSV files were retrieved from Kaggle and the last dataset CSV file was retrieved using an API from [Alpha Vantage](https://www.alphavantage.co/documentation/).
+The dataset contains 4 CSV files. The first three CSV files were retrieved from Kaggle and the GOOG CSV file was retrieved using an API from [Alpha Vantage](https://www.alphavantage.co/documentation/).
 
 - GOOG.csv
     - `open`
