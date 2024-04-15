@@ -4,22 +4,19 @@ import streamlit as st
 import pandas as pd
 import requests
 
-st.write('# Alpha Vantage Stock Price Data')
+st.write('# Alpha Vantage stock price data')
 
-API_KEY = 'FYHS11VFOEALEUF3' 
+API_KEY = 'demo' # Replace it with real value
 
 # Ask user for stock symbol
 symbol = st.text_input('Enter stock symbol:', 'IBM').upper()
 
 # API Endpoint to retrieve Daily Time Series
-url=f"https://www.alphavantage.co/queryfunction=TIME_SERIES_DAILY&symbol={symbol}&apikey={API_KEY}"
-
+url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey={API_KEY}"
 
 # Request the data, parse JSON response and store it in Python variable
-r = requests.get(url,timeout =5)
+r = requests.get(url, timeout=5)
 data = r.json()
-
-
 
 # Extract basic information from collected data
 information = data['Meta Data']['1. Information']
