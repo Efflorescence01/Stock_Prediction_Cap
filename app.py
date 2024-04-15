@@ -14,15 +14,21 @@ symbol = st.text_input('Enter stock symbol:', 'IBM').upper()
 # API Endpoint to retrieve Daily Time Series
 url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey={API_KEY}"
 
+url1 = f"https://www.alphavantage.co/query?
+function=OVERVIEW&symbol={symbol}&apikey={API_KEY}"
 
 # Request the data, parse JSON response and store it in Python variable
-r = requests.get(url, timeout=5)
+r = requests.get(url)
 data = r.json()
+
+r1 = requests.get(url1)
+data1 = r1.json()
 
 
 # Extract basic information from collected data
 information = data['Meta Data']['1. Information']
 symbol = data['Meta Data']['2. Symbol']
+description = data1['Meta Data']['Description']
 last_refreshed = data['Meta Data']['3. Last Refreshed']
 
 # Display the collected data to user using Streamline functions
