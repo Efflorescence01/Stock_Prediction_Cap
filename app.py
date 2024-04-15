@@ -6,7 +6,7 @@ import requests
 
 st.write('# Alpha Vantage stock price data')
 
-API_KEY = 'demo' # Replace it with real value
+API_KEY = 'FYHS11VFOEALEUF3' # Replace it with real value
 
 # Ask user for stock symbol
 symbol = st.text_input('Enter stock symbol:', 'IBM').upper()
