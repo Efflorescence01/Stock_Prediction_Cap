@@ -12,11 +12,11 @@ API_KEY = 'FYHS11VFOEALEUF3'
 symbol = st.text_input('Enter stock symbol:', 'IBM').upper()
 
 # API Endpoint to retrieve Daily Time Series
-url= f"https://www.alphavantage.co/queryfunction=TIME_SERIES_DAILY&symbol={symbol}&apikey={API_KEY}"
+url=f"https://www.alphavantage.co/queryfunction=TIME_SERIES_DAILY&symbol={symbol}&apikey={API_KEY}"
 
 
 # Request the data, parse JSON response and store it in Python variable
-r = requests.get(url)
+r = requests.get(url,timeout =5)
 data = r.json()
 
 
