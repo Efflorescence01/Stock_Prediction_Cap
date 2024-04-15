@@ -1,14 +1,29 @@
 # Stock Analysis & Prediction Capstone
 ![alt text](https://miro.medium.com/v2/resize:fit:1252/format:webp/0*SaNg8uUaKCMQSS5g.jpg)
 
-## Table of Contents  
+## Table of Contents
+- [Latest Updates](#Latest-Updates)
 - [Project Overview](#Project-Overview)
+- [Installation](#Installing-&-Running-Project)
 - [Dateset](#Dataset)
 - [Project Flowchart](#Project-Flowchart)
 - [Project Organization](#Project-Organization)
 
+### Latest Updates
+As this is still my first data science project, I will continue to update it for further improvements. Some things that I will be updating are the code(More dynamic, better readability) and  the machine-learning models(Trying new models or improving on the current ones).
+
 ### Project Overview 
   This is a data analysis & machine learning project for stock trading and investing. It is focused on the S&P 500 index and the companies within that index during the period from 2010 to the present year (2024). This project will utilize Juypterlab/Notebook to perform data cleaning, data analysis, and modeling. The language of choice will be Python. We will also be using data science-related libraries such as matplotlib, pandas, NumPy, and Scikitlearn. As a stock trading enthusiast, I started this project to improve my skills and knowledge in data analysis regarding stock data. Previously, I only worked with simple statistical terms such as averages, and maximum and minimum values. As such, I wanted a more granular perspective of stock data to improve my analysis of my trades and thus increase my earnings and win rate.Individuals/businesses engaged in investing or trading activities may obtain some insight from this project.
+
+### Installing & Running Project
+1. We will be using Anaconda to help run our notebooks. Download Anaconda [Here](https://www.anaconda.com/download/success).
+2. Next, in Anaconda Prompt, create an environment by typing 'conda create -n <Name of Environment>'.
+3. Activate the environment by typing 'conda activate <Name of Environment>'.
+4. Finally, we can install all the necessary packages to run the notebooks. We will be installing 'pandas', 'numpy', 'matplotlib', 'scikit-learn','Tensorflow'.
+   We will either use the 'pip' command or the 'conda install' command to install these libraries. [Installation](https://www.geeksforgeeks.org/python-add-packages-to-anaconda-environment/) Use the link for more information on how to install packages/libraries to your Anaconda Environment.
+5. Now, we can download the notebooks in the repository and run them on Jupyterlab/Jupyternotebook.
+
+
 
 ### Dataset
 The datasets were obtained on Kaggle: https://www.kaggle.com/datasets/andrewmvd/sp-500-stocks. This dataset is updated regularly by the main contributor of that page. As such the current dataset that I have on hand will be behind compared to the one on the website. As a note, the dataset was retrieved on March.3,2024. 
