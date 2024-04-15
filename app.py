@@ -27,7 +27,7 @@ data_1 = r_1.json()
 information = data['Meta Data']['1. Information']
 symbol = data['Meta Data']['2. Symbol']
 last_refreshed = data['Meta Data']['3. Last Refreshed']
-description = data_1['Meta Data']['4. Description']
+description = data_1['Description']
 
 # Display the collected data to user using Streamline functions
 st.write('## ' + information)
