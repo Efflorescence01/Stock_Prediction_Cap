@@ -90,5 +90,7 @@ The dataset contains 4 CSV files. The first three CSV files were retrieved from 
     - Cleaned_Dataset file contains the cleaned data frames
     - Presentations file contains all the Sprint Presentations
     - Stock Data API & Cleaning file contains the API and Stock data cleaning notebooks
+    - Stock Modeling file contains the Jupyter files for running the machine learning models
     - README.md is a overview of the entire repository
+    - app.py is the python file that creates a Streamlit app showcasing stock information for a specified stock
     - gitignore file tracks all the files that do not need to be updated or tracked
