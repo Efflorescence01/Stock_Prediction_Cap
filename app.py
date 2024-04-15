@@ -46,8 +46,8 @@ df['date'] = pd.to_datetime(df['date'])
 df = df.sort_values(by='date')
 
 # Display Streamline charts
-st.line_chart(df.set_index('date')['open'])
-st.line_chart(df.set_index('date')['high'])
-st.line_chart(df.set_index('date')['low'])
-st.line_chart(df.set_index('date')['close'])
+st.line_chart(df.set_index('date')['open'],color = "#9100cd")
+st.line_chart(df.set_index('date')['high'],color = "#e600cd")
+st.line_chart(df.set_index('date')['low'],color = "#5100cd")
+st.line_chart(df.set_index('date')['close'],color = "#017d00")
 st.bar_chart(df.set_index('date')['volume'])
