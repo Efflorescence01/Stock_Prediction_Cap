@@ -17,8 +17,8 @@ As this is still my first data science project, I will continue to update it for
 
 ### Installing & Running Project
 1. We will be using Anaconda to help run our notebooks. Download Anaconda [Here](https://www.anaconda.com/download/success).
-2. Next, in Anaconda Prompt, create an environment by typing 'conda create -n <Name of Environment>'.
-3. Activate the environment by typing 'conda activate <Name of Environment>'.
+2. Next, in Anaconda Prompt, create an environment by typing 'conda create -n (Name of Environment)'.
+3. Activate the environment by typing 'conda activate (Name of Environment)'.
 4. Finally, we can install all the necessary packages to run the notebooks. We will be installing 'pandas', 'numpy', 'matplotlib', 'scikit-learn','Tensorflow'.
    We will either use the 'pip' command or the 'conda install' command to install these libraries. [Installation](https://www.geeksforgeeks.org/python-add-packages-to-anaconda-environment/) Use the link for more information on how to install packages/libraries to your Anaconda Environment.
 5. Now, we can download the notebooks in the repository and run them on Jupyterlab/Jupyternotebook.
