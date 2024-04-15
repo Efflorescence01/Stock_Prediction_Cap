@@ -12,7 +12,7 @@ API_KEY = 'FYHS11VFOEALEUF3'
 symbol = st.text_input('Enter stock symbol:', 'IBM').upper()
 
 # API Endpoint to retrieve Daily Time Series
-url=f"https://www.alphavantage.co/query
+url= f"https://www.alphavantage.co/query
 function=TIME_SERIES_DAILY&symbol={symbol}&apikey={API_KEY}"
 
 
