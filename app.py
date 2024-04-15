@@ -25,7 +25,7 @@ data1 = r1.json()
 
 
 # Extract basic information from collected data
-information = data['Meta Data']['1. Information']
+information = data['1. Information']
 symbol = data['Meta Data']['2. Symbol']
 description = data1['Meta Data']['Description']
 last_refreshed = data['Meta Data']['3. Last Refreshed']
