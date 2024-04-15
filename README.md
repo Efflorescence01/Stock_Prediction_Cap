@@ -1,4 +1,5 @@
-# Stock Analysis & Prediction Capstone 
+# Stock Analysis & Prediction Capstone
+![alt text]((https://miro.medium.com/v2/resize:fit:626/0*SaNg8uUaKCMQSS5g.jpg))
 
 ## Table of Contents 
 - [Dateset](#Dataset)
