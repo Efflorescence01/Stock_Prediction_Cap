@@ -26,9 +26,9 @@ def preprocessing(data):
     Function to preprocess the json file obtained from the AlphaVantage API. This function will turn the json file into a dataframe and preprocess the data.
     """
     data_1 = pd.DataFrame(data['Time Series (Daily)']).T.copy()
+    data_1.columns = ['open', 'high', 'low', 'close', 'adjusted close', 'volume','dividend amount','split coefficient']
     del data_1['dividend amount']
     del data_1['split coefficient']
-    data_1.columns = ['open', 'high', 'low', 'close', 'adjusted close', 'volume']
     data_1.index = pd.to_datetime(data_1.index)
 
     for column in data_1.columns:
