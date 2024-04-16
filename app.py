@@ -2,6 +2,7 @@
 # Import required libraries
 import streamlit as st
 import pandas as pd
+import numpy as np
 import requests
 
 st.write('# Alpha Vantage stock price data')
