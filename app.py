@@ -32,7 +32,7 @@ def preprocessing(data):
 	data_1.index = pd.to_datetime(data_1.index)
 
 	for column in data1.columns:
-    data_1[column] = pd.to_numeric(data_1[column])
+    	data_1[column] = pd.to_numeric(data_1[column])
 
 	return data_1
 
