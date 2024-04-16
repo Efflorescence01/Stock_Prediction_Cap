@@ -22,19 +22,19 @@ data = r.json()
 
 #function to preprocess data
 def preprocessing(data):
-	"""
-	Function to preprocess the the json file obtained from the AlphaVantage API. This function will turn the json file into a dataframe and preprocess the data.
-	"""
-	data_1 = pd.DataFrame(data['Time Series (Daily)']).T.copy()
-	del data_1['dividend amount']
-	del data_1['split coefficient']
-	data_1.columns = ['open', 'high', 'low', 'close', 'adjusted close', 'volume']
-	data_1.index = pd.to_datetime(data_1.index)
+    """
+    Function to preprocess the json file obtained from the AlphaVantage API. This function will turn the json file into a dataframe and preprocess the data.
+    """
+    data_1 = pd.DataFrame(data['Time Series (Daily)']).T.copy()
+    del data_1['dividend amount']
+    del data_1['split coefficient']
+    data_1.columns = ['open', 'high', 'low', 'close', 'adjusted close', 'volume']
+    data_1.index = pd.to_datetime(data_1.index)
 
-	for column in data_1.columns:
-    	data_1[column] = pd.to_numeric(data_1[column])
+    for column in data_1.columns:
+        data_1[column] = pd.to_numeric(data_1[column])
 
-	return data_1
+    return data_1
 
 preprocessing(data)
 
