@@ -31,7 +31,7 @@ def preprocessing(data):
 	data_1.columns = ['open', 'high', 'low', 'close', 'adjusted close', 'volume']
 	data_1.index = pd.to_datetime(data_1.index)
 
-	for column in data1.columns:
+	for column in data_1.columns:
     	data_1[column] = pd.to_numeric(data_1[column])
 
 	return data_1
