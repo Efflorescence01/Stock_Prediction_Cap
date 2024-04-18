@@ -12,6 +12,7 @@ API_KEY = 'FYHS11VFOEALEUF3' # Replace it with real value
 
 new_model = tf.keras.models.load_model('C:/Users/linwi/Documents/Stock_test/Stock Modeling/lstm-timeseries.h5')
 new_data = pd.read_csv('C:/Users/linwi/Documents/Stock_test/Cleaned_Dataset/GOOG.csv',index_col = 0)
+mm_scaler = MinMaxScaler(feature_range=(0,1))
 
 def preprocessing (data):
 	data.index = pd.to_datetime(data.index)
@@ -20,7 +21,6 @@ def preprocessing (data):
 	data.sort_index(inplace = True, ascending = True)
 	data1 = data.filter(['adjusted close']).values
 	dataset = data1.astype('float32')
-	mm_scaler = MinMaxScaler(feature_range=(0,1))
 	scaled_dataset = mm_scaler.fit_transform(dataset)
 
 	return scaled_dataset
