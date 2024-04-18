@@ -10,7 +10,7 @@ import tensorflow as tf
 API_KEY = 'FYHS11VFOEALEUF3' # Replace it with real value
 
 
-new_model = tf.keras.models.load_model('lstm-timeseries.h5')
+new_model = tf.keras.models.load_model('C:/Users/linwi/Documents/Stock_test/Stock Modeling/lstm-timeseries.h5')
 new_data = pd.read_csv('C:/Users/linwi/Documents/Stock_test/Cleaned_Dataset/GOOG.csv',index_col = 0)
 
 def preprocessing (data):
