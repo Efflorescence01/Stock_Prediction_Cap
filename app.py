@@ -116,19 +116,19 @@ def train_test_splits(scaled_dataset):
 # 	#Transforming them back to their original price values
 # 	predictions = mm_scaler.inverse_transform(predictions)
 
-# 	# Plot the data
-# 	train = new_data[:int(len(dataset)*0.8)]
-# 	valid = new_data[int(len(dataset)*0.8):]
-# 	valid['Predictions'] = predictions
+	# # Plot the data
+	# train = new_data[:int(len(dataset)*0.8)]
+	# valid = new_data[int(len(dataset)*0.8):]
+	# valid['Predictions'] = predictions
 
-# 	plt.figure(figsize=(16,8))
-# 	plt.title('LSTM Model')
-# 	plt.xlabel('Date', fontsize=18)
-# 	plt.ylabel('Close Price USD ($)', fontsize=18)
-# 	plt.plot(train['adjusted close'])
-# 	plt.plot(valid[['adjusted close', 'Predictions']])
-# 	plt.legend(['Train', 'Val', 'Predictions'], loc='lower right')
-# 	plt.show()
+	# plt.figure(figsize=(16,8))
+	# plt.title('LSTM Model')
+	# plt.xlabel('Date', fontsize=18)
+	# plt.ylabel('Close Price USD ($)', fontsize=18)
+	# plt.plot(train['adjusted close'])
+	# plt.plot(valid[['adjusted close', 'Predictions']])
+	# plt.legend(['Train', 'Val', 'Predictions'], loc='lower right')
+	# plt.show()
 
 def main():
     st.write('# Alpha Vantage stock price data')
@@ -190,16 +190,20 @@ def main():
     # Transforming them back to their original price values
     predictions = mm_scaler.inverse_transform(predictions)
 
-    # Plot the data
-    plt.figure(figsize=(16, 8))
-    plt.title('LSTM Model')
-    plt.xlabel('Date', fontsize=18)
-    plt.ylabel('Close Price USD ($)', fontsize=18)
-    plt.plot(x_train, label='Train')
-    plt.plot(np.arange(len(x_train), len(x_train) + len(predictions)), y_test, label='Val')
-    plt.plot(np.arange(len(x_train), len(x_train) + len(predictions)), predictions, label='Predictions')
-    plt.legend(loc='lower right')
-    plt.show()
+
+	# Plot the data
+	train = new_data[:int(len(dataset)*0.8)]
+	valid = new_data[int(len(dataset)*0.8):]
+	valid['Predictions'] = predictions
+
+	plt.figure(figsize=(16,8))
+	plt.title('LSTM Model')
+	plt.xlabel('Date', fontsize=18)
+	plt.ylabel('Close Price USD ($)', fontsize=18)
+	plt.plot(train['adjusted close'])
+	plt.plot(valid[['adjusted close', 'Predictions']])
+	plt.legend(['Train', 'Val', 'Predictions'], loc='lower right')
+	plt.show()
 
 
 
