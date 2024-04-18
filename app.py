@@ -191,10 +191,10 @@ def main():
     predictions = mm_scaler.inverse_transform(predictions)
 
 
-	# Plot the data
-	train = new_data[:int(len(dataset)*0.8)]
-	valid = new_data[int(len(dataset)*0.8):]
-	valid['Predictions'] = predictions
+	# # Plot the data
+	# train = new_data[:int(len(dataset)*0.8)]
+	# valid = new_data[int(len(dataset)*0.8):]
+	# valid['Predictions'] = predictions
 
 	plt.figure(figsize=(16,8))
 	plt.title('LSTM Model')
