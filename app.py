@@ -23,7 +23,7 @@ def preprocessing (data):
 	dataset = data1.astype('float32')
 	scaled_dataset = mm_scaler.fit_transform(dataset)
 
-	return scaled_dataset
+	return dataset, scaled_dataset
 
 def train_test_splits(scaled_dataset):
 	sequence_length = 60
@@ -116,8 +116,8 @@ def main():
 	predictions = mm_scaler.inverse_transform(predictions)
 
 	# Plot the data
-	train = data[:int(len(dataset)*0.8)]
-	valid = data[int(len(dataset)*0.8):]
+	train = new_data[:int(len(dataset)*0.8)]
+	valid = new_data[int(len(dataset)*0.8):]
 	valid['Predictions'] = predictions
 
 	plt.figure(figsize=(16,8))
