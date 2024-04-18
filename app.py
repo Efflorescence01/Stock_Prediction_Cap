@@ -106,6 +106,9 @@ def main():
 	x_train, y_train, x_test, y_test = train_test_splits(preprocessing(new_data))
 
 	# Get the model's predicted price values
+	from sklearn.preprocessing import MinMaxScaler
+	mm_scaler = MinMaxScaler()
+
 	predictions = new_model.predict(x_test)
 	#Transforming them back to their original price values
 	predictions = mm_scaler.inverse_transform(predictions)
