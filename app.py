@@ -192,16 +192,15 @@ def main():
 
     #Plot the predictions
     fig = plt.figure(figsize=(16,8))
-	plt.title('LSTM Model')
-	plt.xlabel('Date', fontsize=18)
-	plt.ylabel('Close Price USD ($)', fontsize=18)
-	plt.plot(y_train['adjusted close'])
-	plt.plot(y_test['adjusted close'])
-	plt.plot(predictions)
-	plt.legend(['Train', 'Val', 'Predictions'], loc='lower right')
-	plt.show()
-
-	st.pyplot(fig)
+    plt.title('LSTM Model')
+    plt.xlabel('Date', fontsize=18)
+    plt.ylabel('Close Price USD ($)', fontsize=18)
+    plt.plot(y_train['adjusted close'])
+    plt.plot(y_test['adjusted close'])
+    plt.plot(predictions)
+    plt.legend(['Train', 'Val', 'Predictions'], loc='lower right')
+    plt.show()
+    st.pyplot(fig)
 
 
 
