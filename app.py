@@ -190,16 +190,20 @@ def main():
     # Transforming them back to their original price values
     predictions = mm_scaler.inverse_transform(predictions)
 
-    print(type(y_train))
+    train = new_data[:int(len(dataset)*0.8)]
+    valid = new_data[int(len(dataset)*0.8):]
+    valid['Predictions'] = predictions
+
+
+
 
     #Plot the predictions
     fig = plt.figure(figsize=(16,8))
     plt.title('LSTM Model')
     plt.xlabel('Date', fontsize=18)
     plt.ylabel('Close Price USD ($)', fontsize=18)
-    plt.plot(y_train['adjusted close'])
-    plt.plot(y_test['adjusted close'])
-    plt.plot(predictions)
+    plt.plot(train['adjusted close'])
+    plt.plot(valid[['adjusted close', 'Predictions']])
     plt.legend(['Train', 'Val', 'Predictions'], loc='lower right')
     plt.show()
     st.pyplot(fig)
