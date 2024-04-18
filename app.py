@@ -190,6 +190,7 @@ def main():
     # Transforming them back to their original price values
     predictions = mm_scaler.inverse_transform(predictions)
 
+    #Creating new dataframes to plot onto the graph
     train = new_data[:int(len(dataset)*0.8)]
     valid = new_data[int(len(dataset)*0.8):]
     valid['Predictions'] = predictions
