@@ -190,11 +190,8 @@ def main():
     # Transforming them back to their original price values
     predictions = mm_scaler.inverse_transform(predictions)
 
-
-   # Plot the data
-	
-
-	fig = plt.figure(figsize=(16,8))
+    #Plot the predictions
+    fig = plt.figure(figsize=(16,8))
 	plt.title('LSTM Model')
 	plt.xlabel('Date', fontsize=18)
 	plt.ylabel('Close Price USD ($)', fontsize=18)
