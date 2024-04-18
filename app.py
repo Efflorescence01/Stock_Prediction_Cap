@@ -103,7 +103,7 @@ def main():
 	st.write("Daily Volume Chart")
 	st.bar_chart(df.set_index('date')['volume'])
 
-	train_test_splits(preprocessing(new_data))
+	x_train, y_train, x_test, y_test = train_test_splits(preprocessing(new_data))
 
 	# Get the model's predicted price values
 	predictions = new_model.predict(x_test)
