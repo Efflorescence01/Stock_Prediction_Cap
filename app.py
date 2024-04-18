@@ -108,8 +108,8 @@ def main():
 	x_train, y_train, x_test, y_test = train_test_splits(scaled_dataset)
 
 	# Get the model's predicted price values
-	from sklearn.preprocessing import MinMaxScaler
-	mm_scaler = MinMaxScaler()
+	# from sklearn.preprocessing import MinMaxScaler
+	# mm_scaler = MinMaxScaler(feature_range=(0,1))
 
 	predictions = new_model.predict(x_test)
 	#Transforming them back to their original price values
