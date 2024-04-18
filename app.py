@@ -200,7 +200,7 @@ def main():
 
     #Plot the predictions
     fig = plt.figure(figsize=(16,8))
-    plt.title('LSTM Model')
+    plt.title('LSTM Model Predictions for GOOG')
     plt.xlabel('Date', fontsize=18)
     plt.ylabel('Close Price USD ($)', fontsize=18)
     plt.plot(train['adjusted close'])
