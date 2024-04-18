@@ -103,9 +103,7 @@ def main():
 	st.write("Daily Volume Chart")
 	st.bar_chart(df.set_index('date')['volume'])
 
-	preprocessing(new_data)
-
-	train_test_splits(scaled_dataset)
+	train_test_splits(preprocessing(new_data))
 
 
 
