@@ -51,84 +51,154 @@ def train_test_splits(scaled_dataset):
 
 	return x_train, y_train, x_test, y_test
 
+# def main():
+# 	st.write('# Alpha Vantage stock price data')
+# 	# Ask user for stock symbol
+# 	symbol = st.text_input('Enter stock symbol:', 'GOOG').upper()
+
+# 	# API Endpoint to retrieve Daily Time Series
+# 	url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey={API_KEY}"
+
+
+# 	# Request the data, parse JSON response and store it in Python variable
+# 	r = requests.get(url, timeout=5)
+# 	data = r.json()
+
+# 	# Extract basic information from collected data
+# 	information = data['Meta Data']['1. Information']
+# 	symbol = data['Meta Data']['2. Symbol']
+# 	last_refreshed = data['Meta Data']['3. Last Refreshed']
+
+# 	# Display the collected data to user using Streamline functions
+# 	st.write('## ' + information)
+# 	st.write('### ' + symbol)
+# 	st.write('### Last update: ' + last_refreshed)
+
+# 	st.write('## Time Series (Daily)')
+
+# 	# Use Pandas' Data Frame to prepare data to be displayed in charts
+# 	df = pd.DataFrame.from_dict(data['Time Series (Daily)'], orient='index')
+
+# 	df = df.reset_index()
+# 	df.columns = ['date', 'open', 'high', 'low', 'close', 'volume']
+
+# 	df['open'] = df['open'].astype(float)
+# 	df['high'] = df['high'].astype(float)
+# 	df['low'] = df['low'].astype(float)
+# 	df['close'] = df['close'].astype(float)
+# 	df['volume'] = df['volume'].astype(int)
+
+# 	df['date'] = pd.to_datetime(df['date'])
+# 	df = df.sort_values(by='date')
+
+# 	# Display Streamline charts
+# 	st.write("Open")
+# 	st.line_chart(df.set_index('date')['open'],color = "#9100cd")
+# 	st.write("High")
+# 	st.line_chart(df.set_index('date')['high'],color = "#e600cd")
+# 	st.write("Low")
+# 	st.line_chart(df.set_index('date')['low'],color = "#5100cd")
+# 	st.write("Close")
+# 	st.line_chart(df.set_index('date')['close'],color = "#017d00")
+# 	st.write("Daily Volume Chart")
+# 	st.bar_chart(df.set_index('date')['volume'])
+
+# 	scaled_dataset = preprocessing(new_data)
+
+# 	x_train, y_train, x_test, y_test = train_test_splits(scaled_dataset)
+
+# 	# Get the model's predicted price values
+# 	# from sklearn.preprocessing import MinMaxScaler
+# 	# mm_scaler = MinMaxScaler(feature_range=(0,1))
+
+# 	predictions = new_model.predict(x_test)
+# 	#Transforming them back to their original price values
+# 	predictions = mm_scaler.inverse_transform(predictions)
+
+# 	# Plot the data
+# 	train = new_data[:int(len(dataset)*0.8)]
+# 	valid = new_data[int(len(dataset)*0.8):]
+# 	valid['Predictions'] = predictions
+
+# 	plt.figure(figsize=(16,8))
+# 	plt.title('LSTM Model')
+# 	plt.xlabel('Date', fontsize=18)
+# 	plt.ylabel('Close Price USD ($)', fontsize=18)
+# 	plt.plot(train['adjusted close'])
+# 	plt.plot(valid[['adjusted close', 'Predictions']])
+# 	plt.legend(['Train', 'Val', 'Predictions'], loc='lower right')
+# 	plt.show()
+
 def main():
-	st.write('# Alpha Vantage stock price data')
-	# Ask user for stock symbol
-	symbol = st.text_input('Enter stock symbol:', 'GOOG').upper()
+    st.write('# Alpha Vantage stock price data')
+    # Ask user for stock symbol
+    symbol = st.text_input('Enter stock symbol:', 'GOOG').upper()
 
-	# API Endpoint to retrieve Daily Time Series
-	url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey={API_KEY}"
+    # API Endpoint to retrieve Daily Time Series
+    url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey={API_KEY}"
 
+    # Request the data, parse JSON response and store it in Python variable
+    r = requests.get(url, timeout=5)
+    data = r.json()
 
-	# Request the data, parse JSON response and store it in Python variable
-	r = requests.get(url, timeout=5)
-	data = r.json()
+    # Extract basic information from collected data
+    information = data['Meta Data']['1. Information']
+    symbol = data['Meta Data']['2. Symbol']
+    last_refreshed = data['Meta Data']['3. Last Refreshed']
 
-	# Extract basic information from collected data
-	information = data['Meta Data']['1. Information']
-	symbol = data['Meta Data']['2. Symbol']
-	last_refreshed = data['Meta Data']['3. Last Refreshed']
+    # Display the collected data to user using Streamline functions
+    st.write('## ' + information)
+    st.write('### ' + symbol)
+    st.write('### Last update: ' + last_refreshed)
 
-	# Display the collected data to user using Streamline functions
-	st.write('## ' + information)
-	st.write('### ' + symbol)
-	st.write('### Last update: ' + last_refreshed)
+    st.write('## Time Series (Daily)')
 
-	st.write('## Time Series (Daily)')
+    # Use Pandas' Data Frame to prepare data to be displayed in charts
+    df = pd.DataFrame.from_dict(data['Time Series (Daily)'], orient='index')
 
-	# Use Pandas' Data Frame to prepare data to be displayed in charts
-	df = pd.DataFrame.from_dict(data['Time Series (Daily)'], orient='index')
+    df = df.reset_index()
+    df.columns = ['date', 'open', 'high', 'low', 'close', 'volume']
 
-	df = df.reset_index()
-	df.columns = ['date', 'open', 'high', 'low', 'close', 'volume']
+    df['open'] = df['open'].astype(float)
+    df['high'] = df['high'].astype(float)
+    df['low'] = df['low'].astype(float)
+    df['close'] = df['close'].astype(float)
+    df['volume'] = df['volume'].astype(int)
 
-	df['open'] = df['open'].astype(float)
-	df['high'] = df['high'].astype(float)
-	df['low'] = df['low'].astype(float)
-	df['close'] = df['close'].astype(float)
-	df['volume'] = df['volume'].astype(int)
+    df['date'] = pd.to_datetime(df['date'])
+    df = df.sort_values(by='date')
 
-	df['date'] = pd.to_datetime(df['date'])
-	df = df.sort_values(by='date')
+    # Display Streamline charts
+    st.write("Open")
+    st.line_chart(df.set_index('date')['open'], color="#9100cd")
+    st.write("High")
+    st.line_chart(df.set_index('date')['high'], color="#e600cd")
+    st.write("Low")
+    st.line_chart(df.set_index('date')['low'], color="#5100cd")
+    st.write("Close")
+    st.line_chart(df.set_index('date')['close'], color="#017d00")
+    st.write("Daily Volume Chart")
+    st.bar_chart(df.set_index('date')['volume'])
 
-	# Display Streamline charts
-	st.write("Open")
-	st.line_chart(df.set_index('date')['open'],color = "#9100cd")
-	st.write("High")
-	st.line_chart(df.set_index('date')['high'],color = "#e600cd")
-	st.write("Low")
-	st.line_chart(df.set_index('date')['low'],color = "#5100cd")
-	st.write("Close")
-	st.line_chart(df.set_index('date')['close'],color = "#017d00")
-	st.write("Daily Volume Chart")
-	st.bar_chart(df.set_index('date')['volume'])
+    dataset, scaled_dataset = preprocessing(new_data)
 
-	scaled_dataset = preprocessing(new_data)
+    x_train, y_train, x_test, y_test = train_test_splits(scaled_dataset)
 
-	x_train, y_train, x_test, y_test = train_test_splits(scaled_dataset)
+    # Get the model's predicted price values
+    predictions = new_model.predict(x_test)
+    # Transforming them back to their original price values
+    predictions = mm_scaler.inverse_transform(predictions)
 
-	# Get the model's predicted price values
-	# from sklearn.preprocessing import MinMaxScaler
-	# mm_scaler = MinMaxScaler(feature_range=(0,1))
-
-	predictions = new_model.predict(x_test)
-	#Transforming them back to their original price values
-	predictions = mm_scaler.inverse_transform(predictions)
-
-	# Plot the data
-	train = new_data[:int(len(dataset)*0.8)]
-	valid = new_data[int(len(dataset)*0.8):]
-	valid['Predictions'] = predictions
-
-	plt.figure(figsize=(16,8))
-	plt.title('LSTM Model')
-	plt.xlabel('Date', fontsize=18)
-	plt.ylabel('Close Price USD ($)', fontsize=18)
-	plt.plot(train['adjusted close'])
-	plt.plot(valid[['adjusted close', 'Predictions']])
-	plt.legend(['Train', 'Val', 'Predictions'], loc='lower right')
-	plt.show()
-
+    # Plot the data
+    plt.figure(figsize=(16, 8))
+    plt.title('LSTM Model')
+    plt.xlabel('Date', fontsize=18)
+    plt.ylabel('Close Price USD ($)', fontsize=18)
+    plt.plot(x_train, label='Train')
+    plt.plot(np.arange(len(x_train), len(x_train) + len(predictions)), y_test, label='Val')
+    plt.plot(np.arange(len(x_train), len(x_train) + len(predictions)), predictions, label='Predictions')
+    plt.legend(loc='lower right')
+    plt.show()
 
 
 
