@@ -32,8 +32,8 @@ def train_test_splits(scaled_dataset):
 	y_train = []
 
 	for i in range(sequence_length, len(train_data)):
-    	x_train.append(train_data[i-sequence_length:i, 0])
-    	y_train.append(train_data[i, 0])
+		x_train.append(train_data[i-sequence_length:i, 0])
+		y_train.append(train_data[i, 0])
 
 	x_train, y_train = np.array(x_train), np.array(y_train)
 	x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
@@ -43,7 +43,7 @@ def train_test_splits(scaled_dataset):
 	y_test = scaled_dataset[int(len(scaled_dataset)*0.8):, :]
 
 	for i in range(sequence_length, len(test_data)):
-    	x_test.append(test_data[i-sequence_length:i, 0])
+		x_test.append(test_data[i-sequence_length:i, 0])
 
 	x_test = np.array(x_test)
 	x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
