@@ -4,77 +4,111 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import requests
-
-st.write('# Alpha Vantage stock price data')
+from sklearn.preprocessing import MinMaxScaler
 
 API_KEY = 'FYHS11VFOEALEUF3' # Replace it with real value
 
-# Ask user for stock symbol
-symbol = st.text_input('Enter stock symbol:', 'GOOG').upper()
 
-# API Endpoint to retrieve Daily Time Series
-url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey={API_KEY}"
+new_model = tf.keras.models.load_model('lstm-timeseries.h5')
+new_data = pd.read_csv('C:/Users/linwi/Documents/Stock_test/Cleaned_Dataset/GOOG.csv',index_col = 0)
+
+def preprocessing (data):
+	data.index = pd.to_datetime(data.index)
+	del data['close']
+	data.dropna(inplace = True)
+	data.sort_index(inplace = True, ascending = True)
+	data1 = data.filter(['adjusted close']).values
+	dataset = data1.astype('float32')
+	mm_scaler = MinMaxScaler(feature_range=(0,1))
+	scaled_dataset = mm_scaler.fit_transform(dataset)
+
+	return scaled_dataset
+
+def train_test_splits(scaled_dataset):
+	sequence_length = 60
+
+	train_data = scaled_dataset[:int(len(scaled_dataset)*0.8), :]
+	x_train = []
+	y_train = []
+
+	for i in range(sequence_length, len(train_data)):
+    	x_train.append(train_data[i-sequence_length:i, 0])
+    	y_train.append(train_data[i, 0])
+
+	x_train, y_train = np.array(x_train), np.array(y_train)
+	x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
+
+	test_data = scaled_dataset[int(len(scaled_dataset)*0.8)-sequence_length:, :]
+	x_test = []
+	y_test = scaled_dataset[int(len(scaled_dataset)*0.8):, :]
+
+	for i in range(sequence_length, len(test_data)):
+    	x_test.append(test_data[i-sequence_length:i, 0])
+
+	x_test = np.array(x_test)
+	x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
+
+	return x_train, y_train, x_test, y_test
+
+def main():
+	st.write('# Alpha Vantage stock price data')
+	# Ask user for stock symbol
+	symbol = st.text_input('Enter stock symbol:', 'GOOG').upper()
+
+	# API Endpoint to retrieve Daily Time Series
+	url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey={API_KEY}"
 
 
-# Request the data, parse JSON response and store it in Python variable
-r = requests.get(url, timeout=5)
-data = r.json()
+	# Request the data, parse JSON response and store it in Python variable
+	r = requests.get(url, timeout=5)
+	data = r.json()
 
-#function to preprocess data
-# def preprocessing(data):
-#     """
-#     Function to preprocess the json file obtained from the AlphaVantage API. This function will turn the json file into a dataframe and preprocess the data.
-#     """
-#     data_1 = pd.DataFrame(data['Time Series (Daily)']).T.copy()
-#     data_1.columns = ['open', 'high', 'low', 'close', 'adjusted close', 'volume','dividend amount','split coefficient']
-#     del data_1['dividend amount']
-#     del data_1['split coefficient']
-#     data_1.index = pd.to_datetime(data_1.index)
+	# Extract basic information from collected data
+	information = data['Meta Data']['1. Information']
+	symbol = data['Meta Data']['2. Symbol']
+	last_refreshed = data['Meta Data']['3. Last Refreshed']
 
-#     for column in data_1.columns:
-#         data_1[column] = pd.to_numeric(data_1[column])
+	# Display the collected data to user using Streamline functions
+	st.write('## ' + information)
+	st.write('### ' + symbol)
+	st.write('### Last update: ' + last_refreshed)
 
-#     return data_1
+	st.write('## Time Series (Daily)')
 
-# preprocessing(data)
+	# Use Pandas' Data Frame to prepare data to be displayed in charts
+	df = pd.DataFrame.from_dict(data['Time Series (Daily)'], orient='index')
+
+	df = df.reset_index()
+	df.columns = ['date', 'open', 'high', 'low', 'close', 'volume']
+
+	df['open'] = df['open'].astype(float)
+	df['high'] = df['high'].astype(float)
+	df['low'] = df['low'].astype(float)
+	df['close'] = df['close'].astype(float)
+	df['volume'] = df['volume'].astype(int)
+
+	df['date'] = pd.to_datetime(df['date'])
+	df = df.sort_values(by='date')
+
+	# Display Streamline charts
+	st.write("Open")
+	st.line_chart(df.set_index('date')['open'],color = "#9100cd")
+	st.write("High")
+	st.line_chart(df.set_index('date')['high'],color = "#e600cd")
+	st.write("Low")
+	st.line_chart(df.set_index('date')['low'],color = "#5100cd")
+	st.write("Close")
+	st.line_chart(df.set_index('date')['close'],color = "#017d00")
+	st.write("Daily Volume Chart")
+	st.bar_chart(df.set_index('date')['volume'])
+
+	preprocessing(new_data)
+
+	train_test_splits(scaled_dataset)
 
 
 
-# Extract basic information from collected data
-information = data['Meta Data']['1. Information']
-symbol = data['Meta Data']['2. Symbol']
-last_refreshed = data['Meta Data']['3. Last Refreshed']
 
-# Display the collected data to user using Streamline functions
-st.write('## ' + information)
-st.write('### ' + symbol)
-st.write('### Last update: ' + last_refreshed)
 
-st.write('## Time Series (Daily)')
-
-# Use Pandas' Data Frame to prepare data to be displayed in charts
-df = pd.DataFrame.from_dict(data['Time Series (Daily)'], orient='index')
-
-df = df.reset_index()
-df.columns = ['date', 'open', 'high', 'low', 'close', 'volume']
-
-df['open'] = df['open'].astype(float)
-df['high'] = df['high'].astype(float)
-df['low'] = df['low'].astype(float)
-df['close'] = df['close'].astype(float)
-df['volume'] = df['volume'].astype(int)
-
-df['date'] = pd.to_datetime(df['date'])
-df = df.sort_values(by='date')
-
-# Display Streamline charts
-st.write("Open")
-st.line_chart(df.set_index('date')['open'],color = "#9100cd")
-st.write("High")
-st.line_chart(df.set_index('date')['high'],color = "#e600cd")
-st.write("Low")
-st.line_chart(df.set_index('date')['low'],color = "#5100cd")
-st.write("Close")
-st.line_chart(df.set_index('date')['close'],color = "#017d00")
-st.write("Daily Volume Chart")
-st.bar_chart(df.set_index('date')['volume'])
+if __name__ == '__main__':
+	main()
