@@ -5,7 +5,8 @@ import pandas as pd
 import numpy as np
 import requests
 from sklearn.preprocessing import MinMaxScaler
-import tensorflow as tf 
+import tensorflow as tf
+import matplotlib.pyplot as plt 
 
 API_KEY = 'FYHS11VFOEALEUF3' # Replace it with real value
 
