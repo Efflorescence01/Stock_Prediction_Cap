@@ -105,6 +105,25 @@ def main():
 
 	train_test_splits(preprocessing(new_data))
 
+	# Get the model's predicted price values
+	predictions = new_model.predict(x_test)
+	#Transforming them back to their original price values
+	predictions = mm_scaler.inverse_transform(predictions)
+
+	# Plot the data
+	train = data[:int(len(dataset)*0.8)]
+	valid = data[int(len(dataset)*0.8):]
+	valid['Predictions'] = predictions
+
+	plt.figure(figsize=(16,8))
+	plt.title('LSTM Model')
+	plt.xlabel('Date', fontsize=18)
+	plt.ylabel('Close Price USD ($)', fontsize=18)
+	plt.plot(train['adjusted close'])
+	plt.plot(valid[['adjusted close', 'Predictions']])
+	plt.legend(['Train', 'Val', 'Predictions'], loc='lower right')
+	plt.show()
+
 
 
 
