@@ -8,7 +8,7 @@ from sklearn.preprocessing import MinMaxScaler
 import tensorflow as tf
 import matplotlib.pyplot as plt 
 
-API_KEY = 'FYHS11VFOEALEUF3' # Replace it with real value
+API_KEY = 'DEMO' # Replace it with real value
 
 
 new_model = tf.keras.models.load_model('C:/Users/linwi/Documents/Stock_test/Stock Modeling/lstm-timeseries.h5')
